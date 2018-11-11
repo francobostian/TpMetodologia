@@ -1,0 +1,35 @@
+
+{% extends 'base/base.html' %}
+
+{% block title%}
+Busqueda
+{% endblock %}
+
+
+{% block content %}
+<form style="text-align:center;" action="{% url 'reserva:filtro_crear' %}" method="POST">
+        <input type="hidden" value="" name="id">
+    <fieldset>
+        <legend>Buscador de propiedades:</legend>
+        
+        <div>
+                <label>Ciudad:</label>
+                <input type="text" name="ciudad" value="">
+        <div>
+            <br>
+            <label>Dia llegada:</label>
+            <input type="date" name="principio" value="">
+        </div>
+        <br>
+        <div>
+            <label for=""> Dia Partida: </label>
+            <input type="date" name="final" value="">
+        </div>
+         <br>
+
+         
+      <input type="submit" value="Submit">
+    </fieldset>
+  </form> 
+
+{% endblock%}

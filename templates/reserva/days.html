@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+
+{% block title%}
+Propiedad
+{% endblock %}
+
+
+{% block content %}
+<form action="{% url 'reserva:reserva_crear' %}" method="POST">
+        <input type="hidden" value="{{ prop.id }}" name="id">
+    <fieldset>
+      <legend>Informacion de reserva:</legend>
+      Propiedad:<br>
+      <input type="text" name="descrip" value="{{ prop.description }}" disabled><br>
+      Ciudad:<br>
+             
+          <input type="text" name="ciudad" value="{{ prop.city.description }}" disabled><br><br>
+          Seleccione de los días disponibles:
+          <br>
+     <!--
+          {% for ad in Days %}
+        
+                  {{ad.date}}
+            
+                  <input type="checkbox" name="dias" value="dias"><br>
+             
+          {% endfor %}
+         -->
+          <br>
+
+          <select style="height:100px; width:300px;" name="dates" id="dates" class="form-control" multiple="multiple">
+                {% for ad in Days %}
+                    <option value="{{ ad.pk }}">{{ ad.date }}</option>
+                {% endfor %}
+            </select>
+            <br>
+      <input type="submit" value="Submit">
+    </fieldset>
+  </form> 
+{% endblock%}

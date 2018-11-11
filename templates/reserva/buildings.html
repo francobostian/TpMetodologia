@@ -1,0 +1,57 @@
+{% extends 'base/base.html' %}
+
+{% block title%}
+Propiedades disponibles
+{% endblock %}
+
+
+{% block content %}
+<strong>Propiedades disponibles</strong>
+<br>
+    
+            {% for building in buildings %}
+           
+            <section id="about" class="msection">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12">
+                                <div class="news-data">
+                                    
+                                <h3>
+                                        <a href="{% url 'reserva:days' building.pk %}" class="light-blue-text">
+                                        <strong>{{ building.description }}</strong>
+                                    </a>
+                                </h3>
+                                <a href="" class="light-blue-text">
+                                        <h6>
+                                            <i class="fa fa-plane"></i>
+                                            <strong> {{ building.city }}</strong>
+                                        </h6>
+                                    </a>
+                                    
+                                    <p>
+                                        <strong>
+                                            <i class="fa fa-clock-o"></i> Precio x dia: {{ building.tariff }}</strong>
+                                    </p>
+                                </div>
+                                <div class="mb-3">
+                                        {% load static %}
+                                        <img src="{% static building.image_url %}" class="img-fluid" alt="">
+                
+                                </div>
+                            </div>    
+                            
+                        </div>
+            
+                    </div>
+            </section>
+            
+            {% endfor %}
+
+            
+    
+
+{% endblock%}
+
+    
+    
