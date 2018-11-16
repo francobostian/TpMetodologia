@@ -78,6 +78,15 @@ def mostrarfiltroView(request):
                         properties = filter(lambda obj: obj.city.description == city_name, properties)
         else:
                 properties = Property.objects.all()
+        
+        daysData = AvailableDay.objects.all()
+        days = []
+
+        for day in daysData:
+                if day.reservation == None:
+                        days.append(day)
+
+        properties = filter(lambda obj: any(d.property == obj for d in days), properties)
 
         return render(request, "reserva/buildings.html", {'buildings': properties})
 
